@@ -62,7 +62,8 @@ body {
 
 .box {
   border-radius: 0.5rem;
-  box-shadow: .4rem .6rem 50; }
+  box-shadow: 1rem 1rem .8rem;
+  color: #ccc; }
 
 .box-1 {
   grid-area: box-1;
@@ -83,6 +84,18 @@ body {
 .box-5 {
   grid-area: box-5;
   background: #19202d; }
+
+@media screen and (max-width: 600px) {
+  .container {
+    display: block; }
+  .box-1,
+  .box-2,
+  .box-3,
+  .box-4,
+  .box-5 {
+    width: 100%;
+    height: auto;
+    margin-bottom: 2rem; } }
 
 .profile {
   display: flex;
