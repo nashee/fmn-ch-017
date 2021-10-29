@@ -1,0 +1,17 @@
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*,*::after, *::before {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+    
+}
+
+body {
+    padding: 16.4rem;
+    background-color: #F2F2F2;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}

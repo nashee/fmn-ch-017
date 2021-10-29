@@ -1,0 +1,50 @@
+
+.container {
+    display: grid;
+    grid-template-columns: 255px 255px 255px 255px;
+    grid-template-rows: 282px 266px;
+    grid-template-areas: 
+    "box-1 box-1 box-2 box-3"
+    "box-4 box-5 box-5 box-3 "
+    ;
+    grid-gap: 3rem;
+}
+
+.box {
+    border-radius: $box-border;
+    box-shadow: .4rem .6rem 50 ;
+}
+
+.box-1 {
+    grid-area: box-1;
+    @extend %padding-bg;
+    background: $bg-color-box-1;
+    
+}
+
+.box-2 {
+    grid-area: box-2;
+    background: $bg-color-box-2;
+    @extend %padding-bg;
+}
+
+.box-3 {
+    grid-area: box-3;
+    background: $bg-color-box-3-4;
+    @extend %padding-bg;
+}
+   
+
+.box-4 {
+    grid-area: box-4;
+    background: $bg-color-box-3-4;
+    @extend %padding-bg;
+    
+}
+
+.box-5 {
+    grid-area: box-5;
+    background: $bg-color-box-5;
+    @extend %padding-bg;
+}
+
