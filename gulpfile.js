@@ -4,25 +4,26 @@ const browserSync = require('browser-sync').create();
 const del = require("del");
 const babel = require('gulp-babel');
 const concatenate = require('gulp-concat');
-
+const exec = require('child_process').exec; // run command-line programs from gulp
+var git = require('gulp-git');
 
 
 // clean
 async function clean(cb){
-    await del('build');
+    await del('dist');
     cb();
 }
 
 // html
 function html(cb){
     src("src/*.html")
-    .pipe(dest('build'))
+    .pipe(dest('dist'))
     cb();
 }
 
 function img(cb){
     src("src/assets/img/*")
-    .pipe(dest('build/assets/img/'))
+    .pipe(dest('dist/assets/img/'))
     cb();
 }
 
@@ -32,28 +33,28 @@ function img(cb){
 function css(cb){
     src('src/assets/sass/main.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(dest("build/assets/css"))
+    .pipe(dest("dist/assets/css"))
     cb();
 }  */
 
 function cssFA(cb){
     src('src/assets/vendors/fontawesome/font.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(dest("build/assets/vendors/fontawesome/"))
+    .pipe(dest("dist/assets/vendors/fontawesome/"))
     cb();
 }
 
 function css(cb){
     src('src/assets/sass/main.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(dest("build/assets/css/"))
+    .pipe(dest("dist/assets/css/"))
     cb();
 }
 
 //fontawsome
 function fas(cb){
     src('node_modules/@fortawesome/fontawesome-free/webfonts/*')
-    .pipe(dest('build/assets/vendors/webfonts/'))
+    .pipe(dest('dist/assets/vendors/webfonts/'))
     cb();
 }
 exports.fas = fas;
@@ -69,12 +70,20 @@ function js(cb){
     //  presets: ['@babel/env']
     // }))
    .pipe(concatenate('main.js'))
-    .pipe(dest('build/assets/js/module'));
+    .pipe(dest('dist/assets/js/module'));
     cb();
   
 }
 
 */
+  function  gitAdd(cb){
+      src('./*')
+      .pipe(git.add());
+      cb();
+  }
+
+  exports.gitAdd = gitAdd;
+
 // server
 function server(cb){
     browserSync.init({
@@ -82,11 +91,18 @@ function server(cb){
         open: false,
         online: false,
         server: {
-            baseDir: "build"
+            baseDir: "dist"
         }
     })
     cb();
 }
+
+function git(cb) {
+    exec('git add . && git commit -m "netlify deploy" && git push')
+    cb();
+}
+
+exports.default = git;
 
 function watcher(cb){
     watch("src/*.html").on("change", series(html, browserSync.reload))
