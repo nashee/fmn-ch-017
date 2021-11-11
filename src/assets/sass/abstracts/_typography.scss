@@ -1,50 +1,16 @@
 .heading-primary {
-    @extend %margin-bm;
-    font-weight: 600;
-    color: $color-b1-heading;
-    font-size: 2rem;
-    line-height: 1.1;
+    font-size: var(--fs-heading-primary);
+    margin-bottom: var(--mb-main);
     
 }
-
-
 
 .quote {
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: $color-b1-p;
-    opacity: 50%;
-    
-}
-
-.name {
-    color: $color-b1-p;
-    font-size: 1.3rem;
-}
-
-.title {
-    color: $color-b1-p;
-    font-size: 1.1rem;
-    color: $color-b1-p;
-    opacity: 50%;
-    
-}
-
-.box-3, .box-4 {
-    .heading-primary {
-        @include text-color($color-b3-heading);
-        
-    }
-    q {
-        @include text-color($color-b3-heading);   
-    }
-    .name {
-        @include text-color($color-b3-heading);
-    }
-    
-    .title {
-        @include text-color($color-b3-heading);
-        opacity: 70%;
-    }
+        font-family: 'Barlow Semi Condensed', sans-serif;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 18px;
+        letter-spacing: 0px;
+        text-align: left;
 
 }
